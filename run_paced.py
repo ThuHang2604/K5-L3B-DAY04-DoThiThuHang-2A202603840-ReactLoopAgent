@@ -25,5 +25,7 @@ providers.post_json = paced
 sys.path.insert(0, "evals")
 import run_evals
 
-sys.argv = ["run_evals.py", "--output", "eval_before.json"]
+if len(sys.argv) < 2:
+    sys.exit("Thiếu tên file đầu ra. Ví dụ: python run_paced.py eval_after.json")
+sys.argv = ["run_evals.py", "--output", sys.argv[1]]
 sys.exit(run_evals.main())
